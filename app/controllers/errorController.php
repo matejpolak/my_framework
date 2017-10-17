@@ -3,11 +3,10 @@
 namespace app\controllers;
 use \codingbootcamp\tinymvc\view;
 
-class indexController {
-
-    public function index() {
+class errorController {
+    public function error404() {
         $document = new view('document');
-        $document->content = 'This is the homepage with something more';
+        $document->content = '404: page didn\'t found';
         return $document;
     }
 }

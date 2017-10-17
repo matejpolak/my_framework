@@ -1,13 +1,7 @@
 <?php
 include '../bootstrap/bootstrap.php';
 
-echo(PUBLIC_DIR);
-echo '<hr>';
-echo 'Hello world!';
-
-echo '<hr>';
 $route = request('route', 404);
-echo $route;
 
 /**
  * Have a look at the request and return the name 

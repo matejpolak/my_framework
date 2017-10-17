@@ -2,11 +2,15 @@
 
 $routes = [
     'homepage' => [
-        'controller' => 'notesController',
-        'action' => 'listing']
+        'controller' => 'indexController',
+        'action' => 'index']
     ,
     'list' => [
         'controller' => 'notesController',
         'action' => 'listing']
+    ,
+    'edit' => [
+        'controller' => 'notesController',
+        'action' => 'edit']
     ,
 ];
