@@ -12,7 +12,12 @@ function getControllerActionFromRequest() {
     $routes = [];
     include  '../routes/web.php';
     
-    $current_route = request('route', 'homepage');
+    $current_uri = $_SERVER['REQUEST_URI'];
+    $current_uri = trim($current_uri, '/');
+
+    $uri_parts = explode('/', $current_uri);
+
+    $current_route = $uri_parts[0] ? $uri_parts[0] : 'homepage';
     
     if(isset($routes[$current_route])) {
         return $routes[$current_route];

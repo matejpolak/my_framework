@@ -20,16 +20,43 @@ class notesController {
     }
 
     public function edit() {
-        $note = new Note();
-        $note->title = 'This is my first note';
-        $note->text = 'This is the text of my first note';
-        $note->added_at = date('Y-m-d H:i:s');
-        $note->insert();
+        if(false) {
 
-        var_dump($note);
+        } else {
+            $note = new Note;
+        }
+
+        if($_POST) {
+            $note->title = request('title', null);
+            $note->text = request('text', null);
+            $note->short_summary = request('short_summary', null);
+
+            $valid = true;
+
+            if(!trim($note->title)) {
+                $valid = false;
+            }
+            if(!trim($note->text)) {
+                $valid = false;
+            }
+            if(!trim($note->short_summary)) {
+                $valid = false;
+            }
+
+            if($valid) {
+                $note->insert();
+
+                header('Location: /list');
+                exit();
+            }
+        }
+
+        $edit_form = new view('notes/edit');
+
+        $edit_form->note = $note;
 
         $document = new view('document');
-        $document->content = 'This is edit form';
+        $document->content = $edit_form;
         return $document;
     }
 }
